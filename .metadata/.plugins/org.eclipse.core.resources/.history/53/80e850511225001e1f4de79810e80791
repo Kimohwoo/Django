@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="content">
+		<h1>{{object.title}}</h1>
+		{{bookmark}}
+		<ul>
+			<li>URL : <a href="{{object.url}}" target="_blank">{{object.url}}</a></li>
+		</ul>
+	</div>
+</body>
+</html>

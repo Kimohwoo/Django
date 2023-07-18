@@ -1,0 +1,11 @@
+from django.shortcuts import render
+from django.views.generic.list import ListView
+from bookmark.models import BookMark
+from django.views.generic.detail import DetailView
+
+# Create your views here.
+class  BookMark(ListView):
+    model=BookMark
+    
+class BookMarkKDV(DetailView):
+    model=BookMark

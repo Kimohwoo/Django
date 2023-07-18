@@ -1,0 +1,72 @@
+-- VERSION_5
+-- START DISKCACHE_3
+C:\Users\it\Documents\DjangoWork\.metadata\.plugins\org.eclipse.core.resources\.projects\mysite\com.python.pydev.analysis\v2_indexcache
+mysite.__init__|1689640464550565800|C:\Users\it\Documents\DjangoWork\mysite\mysite\__init__.py
+bookmark.views|1689648356625377300|C:\Users\it\Documents\DjangoWork\mysite\bookmark\views.py
+mysite.wsgi|1689640465476641100|C:\Users\it\Documents\DjangoWork\mysite\mysite\wsgi.py
+bookmark.migrations.__init__|1689641695255104700|C:\Users\it\Documents\DjangoWork\mysite\bookmark\migrations\__init__.py
+bookmark.models|1689643338428232000|C:\Users\it\Documents\DjangoWork\mysite\bookmark\models.py
+manage|1689640465457640600|C:\Users\it\Documents\DjangoWork\mysite\manage.py
+bookmark.tests|1689641695251072300|C:\Users\it\Documents\DjangoWork\mysite\bookmark\tests.py
+bookmark.apps|1689641695973072700|C:\Users\it\Documents\DjangoWork\mysite\bookmark\apps.py
+bookmark.admin|1689643685719921500|C:\Users\it\Documents\DjangoWork\mysite\bookmark\admin.py
+mysite.settings|1689643012527895500|C:\Users\it\Documents\DjangoWork\mysite\mysite\settings.py
+mysite.asgi|1689640465463638800|C:\Users\it\Documents\DjangoWork\mysite\mysite\asgi.py
+bookmark.__init__|1689641695254071200|C:\Users\it\Documents\DjangoWork\mysite\bookmark\__init__.py
+-- END DISKCACHE
+-- START DICTIONARY
+19
+14=bookmark.views
+15=C:\Users\it\Documents\DjangoWork\mysite\manage.py
+4=mysite.wsgi
+11=C:\Users\it\Documents\DjangoWork\mysite\bookmark\admin.py
+17=BookMark
+9=C:\Users\it\Documents\DjangoWork\mysite\bookmark\apps.py
+19=BookMarkAdmin
+18=BookmarkConfig
+1=C:\Users\it\Documents\DjangoWork\mysite\mysite\settings.py
+8=bookmark.models
+13=C:\Users\it\Documents\DjangoWork\mysite\bookmark\views.py
+16=manage
+7=C:\Users\it\Documents\DjangoWork\mysite\bookmark\models.py
+10=bookmark.apps
+12=bookmark.admin
+2=mysite.settings
+5=C:\Users\it\Documents\DjangoWork\mysite\mysite\asgi.py
+6=mysite.asgi
+3=C:\Users\it\Documents\DjangoWork\mysite\mysite\wsgi.py
+-- END DICTIONARY
+-- START TREE 1
+21
+all|1|ALLOWED_HOSTS!1^28#1*19@
+app|2|application!3^16#1*35@application!5^16#1*51@
+aut|1|AUTH_PASSWORD_VALIDATORS!1^101#1*19@
+bas|1|BASE_DIR!1^16#1*19@
+boo|3|BookMark!7^5#7*65@BookmarkConfig!9^4#7*81@BookMarkAdmin!11^6#7*97@
+dat|1|DATABASES!1^82#1*19@
+deb|1|DEBUG!1^26#1*19@
+def|1|DEFAULT_AUTO_FIELD!1^124#1*19@
+ins|1|INSTALLED_APPS!1^41#1*19@
+lan|1|LANGUAGE_CODE!1^107#1*19@
+lis|1|list!13^15#5*114@
+mai|1|main!15^7#5*130@
+mid|1|MIDDLEWARE!1^51#1*19@
+roo|1|ROOT_URLCONF!1^53#1*19@
+sec|1|SECRET_KEY!1^23#1*19@
+sta|1|STATIC_URL!1^119#1*19@
+tem|1|TEMPLATES!1^69#1*19@
+tim|1|TIME_ZONE!1^109#1*19@
+url|0|
+use|2|USE_I18N!1^111#1*19@USE_TZ!1^113#1*19@
+wsg|1|WSGI_APPLICATION!1^71#1*19@
+-- END TREE
+-- START TREE 2
+7
+__s|1|__str__!17&7^9#9*66@
+def|1|default_auto_field!18&9^5#5*83@
+lis|1|list_display!19&11^7#5*99@
+mod|0|
+nam|1|name!18&9^6#5*83@
+tit|1|title!17&7^6#5*67@
+url|1|url!17&7^7#5*67@
+-- END TREE
