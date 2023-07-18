@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	{{boardCount}}
+	{{boardList}}
+	
+	<ul>
+		{% for bookmark in urlList %}
+		<li>
+			<a href="/detail?url={{bookmark.url}}">{{bookmark.title}}</a>
+		</li>
+		{% endfor %}
+	</ul>
+</body>
+</html>

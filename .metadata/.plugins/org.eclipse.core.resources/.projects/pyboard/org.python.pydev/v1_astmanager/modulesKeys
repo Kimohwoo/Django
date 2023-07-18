@@ -1,4 +1,11 @@
 MODULES_MANAGER_V3
+board.__init__|C:\Users\it\Documents\DjangoWork\pyboard\board\__init__.py
+board.admin|C:\Users\it\Documents\DjangoWork\pyboard\board\admin.py
+board.apps|C:\Users\it\Documents\DjangoWork\pyboard\board\apps.py
+board.migrations.__init__|C:\Users\it\Documents\DjangoWork\pyboard\board\migrations\__init__.py
+board.models|C:\Users\it\Documents\DjangoWork\pyboard\board\models.py
+board.tests|C:\Users\it\Documents\DjangoWork\pyboard\board\tests.py
+board.views|C:\Users\it\Documents\DjangoWork\pyboard\board\views.py
 manage|C:\Users\it\Documents\DjangoWork\pyboard\manage.py
 pyboard.__init__|C:\Users\it\Documents\DjangoWork\pyboard\pyboard\__init__.py
 pyboard.asgi|C:\Users\it\Documents\DjangoWork\pyboard\pyboard\asgi.py

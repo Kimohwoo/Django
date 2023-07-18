@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;pyboard/board/templates/bookmark&apos;" deleteContents="false" description="Delete resource &apos;pyboard/board/templates/bookmark&apos;" element1="/pyboard/board/templates/bookmark" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1689661235004"/>
+</session>

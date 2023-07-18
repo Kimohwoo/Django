@@ -1,8 +1,1 @@
-INSTUPboard.apps
-C:\Users\it\Documents\DjangoWork\pyboard\board\apps.py
-INFOS:&&1|1|2|0|3|4|7&&3|4|2|1|3|5|5&&3|5|2|1|3|6|5
-board.apps=2
-name=5
-BoardConfig=1
-C:\Users\it\Documents\DjangoWork\pyboard\board\apps.py=3
-default_auto_field=4
+DELSTRboard.views

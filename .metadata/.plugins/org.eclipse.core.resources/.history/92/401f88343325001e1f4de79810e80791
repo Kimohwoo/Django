@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Bookmark List</h1>
+	<h3>{{urlCount}}개의 북마크가 등록되어 있음</h3>
+	<ul>
+		{% for bookmark in urlList %}
+		<li>
+			<a href="/detail?url={{bookmark.url}}">{{bookmark.title}}</a>
+		</li>
+		{% endfor %}
+	</ul>
+</body>
+</html>

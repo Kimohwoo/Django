@@ -1,0 +1,14 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>글 등록</h2>
+	<form id="form1" name="form1" method="post" action="/insert/" enctype="multipart/form.data">
+		<div>제목 : <input type="text" name="title" size="80" placeholder="제목을 입력하세요" /></div>
+	</form>
+</body>
+</html>
