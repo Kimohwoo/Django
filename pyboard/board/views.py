@@ -1,19 +1,97 @@
 from django.shortcuts import render, redirect
 from django.template.context_processors import request
-from board.models import Board
+from board.models import Board, Comment
 from django.views.decorators.csrf import csrf_exempt
-import os
+import os, math
 from urllib.parse import quote
 from django.http.response import HttpResponse
 import chunk
+from django.template.defaulttags import csrf_token
+from django.db.models import Q
+import board
 
 # Create your views here.
 UPLOAD_DIR = "C:/Users/it/Documents/DjangoWork/pyboard/board/static/images/"
 
-def list(request):
+def list1(request):
     boardCount = Board.objects.all().count()
     boardList = Board.objects.all().order_by('-bno')
     return render(request, 'board/list.html', {'boardCount': boardCount, 'boardList': boardList})
+
+def list(request):
+    try:
+        search_option = request.POST['search_option']
+    except:
+        search_option = ''
+    try:
+        search = request.POST['search']
+    except:
+        search = ''
+        
+    if search_option == 'all':
+        boardCount = Board.objects.filter(Q(writer__contains=search)
+                                        | Q(title__contains=search)
+                                        | Q(content__contains=search)).count()
+        # boardList = Board.objects.filter(Q(writer__contains=search)
+        #                                 | Q(title__contains=search)
+        #                                 | Q(content__contains=search)).order_by('-bno')
+    elif search_option == 'w':
+        boardCount = Board.objects.filter(Q(writer__contains=search)).count()
+    elif search_option == 't':
+        boardCount = Board.objects.filter(Q(title__contains=search)).count()
+    elif search_option == 'c':
+        boardCount = Board.objects.filter(Q(content__contains=search)).count()
+    else:
+        boardCount = Board.objects.all().count()
+        
+    try:
+        start = int(request.GET['start'])
+    except:
+        start = 0
+        
+    page_size = 5
+    block_size = 5
+    end = start + page_size # ex) 1page: start=0, end=5 [start:end]
+    
+    total_page = math.ceil(boardCount / page_size)   
+    current_page = math.ceil((start+1) / page_size)
+    start_page = math.floor((current_page-1) / block_size) * block_size + 1
+    end_page = start_page + block_size -1
+    
+    if end_page > total_page:
+        end_page = total_page
+    
+    if start_page >= block_size:
+        prev_list = (start_page-2) * page_size
+    else:
+        prev_list = 0
+        
+    if end_page < total_page:
+        next_list = end_page * page_size
+    else:
+        next_list = 0
+    
+    if search_option == 'all':
+        boardList = Board.objects.filter(Q(writer__contains=search)
+                                        | Q(title__contains=search)
+                                        | Q(content__contains=search)).order_by('-bno')[start:end]
+    elif search_option == 'w':
+        boardList = Board.objects.filter(Q(writer__contains=search)).order_by('-bno')[start:end]
+    elif search_option == 't':
+        boardList = Board.objects.filter(Q(title__contains=search)).order_by('-bno')[start:end]
+    elif search_option == 'c':
+        boardList = Board.objects.filter(Q(content__contains=search)).order_by('-bno')[start:end]
+    else:
+        boardList = Board.objects.all().order_by('-bno')[start:end]
+        
+    links = []
+    for i in range(start_page, end_page+1):
+        page_start = (i-1) * page_size
+        link = "<a href='/list?start=" + str(page_start) + "'>" + str(i) + "</a>"
+        links.append(link)
+    return render(request, 'board/list.html', {'boardList': boardList, 'boardCount': boardCount, 'search': search, 'search_option': search_option,
+                                               'start_page': start_page, 'end_page': end_page, 'total_page': total_page, 'block_size': block_size,
+                                               'prev_list': prev_list, 'next_list': next_list, 'links': links})
 
 def register(request):
     return render(request, 'board/register.html')
@@ -62,8 +140,17 @@ def detail(request):
     dto.hit_up()
     dto.save()
     
+    commentList = Comment.objects.filter(bno = no).order_by('-cno')
+    
     filesize = "%.2f"%(dto.filesize/1024)
-    return render(request, 'board/detail.html', {'dto': dto, 'filesize': filesize})
+    return render(request, 'board/detail.html', {'dto': dto, 'filesize': filesize, 'commentList': commentList})
+    
+@csrf_exempt
+def reply_insert(request):
+    no = request.POST['bno']
+    dto = Comment(bno = no, writer = request.POST['writer'], content = request.POST['content'])
+    dto.save()
+    return redirect("/detail?bno="+ no)
     
 @csrf_exempt
 def update(request):

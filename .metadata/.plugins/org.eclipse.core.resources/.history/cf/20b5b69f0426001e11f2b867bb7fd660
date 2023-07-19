@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>게시판 리스트</h2>
+	<h3>게시물 개수 {{boardCount}} <a href="/register">글 등록</a></h3>
+	
+	<form method="post">
+	{% csrf_token %}
+		<select name="search_option">
+			{% if search_option == "w" %}
+			<option value="">선택하세요</option>
+			<option value="w" selected>writer</option>
+			<option value="t">title</option>
+			<option value="c">content</option>
+			<option value="all">writer+title+content</option>
+			{% elif search_option == "t" %}
+			<option value="">선택하세요</option>
+			<option value="w">writer</option>
+			<option value="t" selected>title</option>
+			<option value="c">content</option>
+			<option value="all">writer+title+content</option>
+			{% elif search_option == "c" %}
+			<option value="">선택하세요</option>
+			<option value="w">writer</option>
+			<option value="t">title</option>
+			<option value="c" selected>content</option>
+			<option value="all">writer+title+content</option>
+			{% elif search_option == "all" %}
+			<option value="">선택하세요</option>
+			<option value="w">writer</option>
+			<option value="t">title</option>
+			<option value="c">content</option>
+			<option value="all" selected>writer+title+content</option>
+			{% else %}
+			<option value="">선택하세요</option>
+			<option value="w">writer</option>
+			<option value="t">title</option>
+			<option value="c">content</option>
+			<option value="all" selected>writer+title+content</option>
+			{% endif %}
+		</select>
+		<input type="text" name="search" value="{{search}}">
+		<input type="submit" value="검색">
+	</form>
+	
+	<table border="1">
+		<tr>
+		<th>번호</th>
+		<th>제목</th>
+		<th>작성자</th>
+		<th>날짜</th>
+		<th>조회수</th>
+		<th>첨부파일</th>
+		<th>다운로드수</th>
+		</tr>
+		{% for board in boardList %}
+		<tr align="center">
+			<td>{{board.bno}}</td>
+			<td><a href="/detail?bno={{board.bno}}">{{board.title}}</a></td>
+			<td>{{board.writer}}</td>
+			<td>{{board.post_date}}</td>
+			<td>{{board.hit}}</td>
+			<td>
+				{% if board.filesize > 0 %} 
+				<a href="/download?bno={{board.bno}}">
+				<img src="{% static 'images/file.gif' %}"></a>
+				{% endif %}
+			</td>
+			<td>{{board.down}}</td>
+		</tr>
+		{% endfor %}
+		<tr>
+			<td colspan="7" align="center">
+				{% if start_page >= block_size %}
+				<a href="/list?start={{prev_list}}">[이전]</a>
+				{% endif %}
+				
+				{% autoescape off %}
+				
+				{% for link in links %}
+				{{link}}
+				{% endfor %}
+
+				{% autoescape %}
+				
+				{% if end_page < total_page %}
+				<a href="/list?start={{next_list}}">[다음]</a>
+				{% endif %}
+				
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

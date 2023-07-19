@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>게시판 리스트</h2>
+	<h3>게시물 개수 {{boardCount}} <a href="/register">글 등록</a></h3>
+	
+	<form method="post">
+	{% csrf_token %}
+		<select name="search_option">
+			{% if search_option == "writer" %}
+			<option value="">선택하세요</option>
+			<option value="w" selected>writer</option>
+			<option value="t">title</option>
+			<option value="c">content</option>
+			<option value="wtc">writer+title+content</option>
+			{% elif search_option == "title" %}
+			<option value="">선택하세요</option>
+			<option value="w">writer</option>
+			<option value="t" selected>title</option>
+			<option value="c">content</option>
+			<option value="wtc">writer+title+content</option>
+			{% elif search_option == "content" %}
+			<option value="">선택하세요</option>
+			<option value="w">writer</option>
+			<option value="t">title</option>
+			<option value="c" selected>content</option>
+			<option value="wtc">writer+title+content</option>
+			{% elif search_option == "writer+title+content" %}
+			<option value="">선택하세요</option>
+			<option value="w">writer</option>
+			<option value="t">title</option>
+			<option value="c">content</option>
+			<option value="wtc" selected>writer+title+content</option>
+		</select>
+	</form>
+	
+	<table border="1">
+		<tr>
+		<th>번호</th>
+		<th>제목</th>
+		<th>작성자</th>
+		<th>날짜</th>
+		<th>조회수</th>
+		<th>첨부파일</th>
+		<th>다운로드수</th>
+		</tr>
+		{% for board in boardList %}
+		<tr align="center">
+			<td>{{board.bno}}</td>
+			<td><a href="/detail?bno={{board.bno}}">{{board.title}}</a></td>
+			<td>{{board.writer}}</td>
+			<td>{{board.post_date}}</td>
+			<td>{{board.hit}}</td>
+			<td>
+				{% if board.filesize > 0 %} 
+				<a href="/download?bno={{board.bno}}">
+				<img src="{% static 'images/file.gif' %}"></a>
+				{% endif %}
+			</td>
+			<td>{{board.down}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</body>
+</html>
