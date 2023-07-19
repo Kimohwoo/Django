@@ -53,6 +53,8 @@ def list(request):
     block_size = 5
     end = start + page_size # ex) 1page: start=0, end=5 [start:end]
     
+    print("확인용")
+    
     total_page = math.ceil(boardCount / page_size)   
     current_page = math.ceil((start+1) / page_size)
     start_page = math.floor((current_page-1) / block_size) * block_size + 1

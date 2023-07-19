@@ -84,7 +84,7 @@ def list(request):
     else:
         boardList = Board.objects.all().order_by('-bno')[start:end]
         
-    print(prev_list, "확인")
+    print(prev_list + "확인")
         
     links = []
     for i in range(start_page, end_page+1):
