@@ -23,4 +23,8 @@ urlpatterns = [
     path("list/", views.list),
     path("register/", views.register),
     path("insert/", views.insert),
+    path("download/", views.download),
+    path("detail/", views.detail),
+    path("update/", views.update),
+    path("delete/", views.delete),
 ]

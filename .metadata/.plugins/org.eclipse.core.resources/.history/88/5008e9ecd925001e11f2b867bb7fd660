@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>게시물 보기, 수정</h2>
+	<form method="post" name="form1" enctype=multipart/form-data>
+		<table border="1" width="700">
+			<tr>
+				<td>bno</td><td><input type="text" name="bno" value="{{dto.bno}}" readonly /></td>
+				<td>title</td><td><input type="text" name="bno" value="{{dto.bno}}" readonly /></td>
+				<td>writer</td><td><input type="text" name="bno" value="{{dto.bno}}" readonly /></td>
+				<td>content</td><td><input type="text" name="bno" value="{{dto.bno}}" readonly /></td>
+				<td>hit</td><td><input type="text" name="bno" value="{{dto.bno}}" readonly /></td>
+				<td>filese</td><td><input type="text" name="bno" value="{{dto.bno}}" readonly /></td>
+				<td>downs</td><td><input type="text" name="bno" value="{{dto.bno}}" readonly /></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>

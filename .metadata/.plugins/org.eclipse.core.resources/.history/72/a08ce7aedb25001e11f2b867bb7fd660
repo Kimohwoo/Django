@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function home(){
+		location.href = '/list/';
+	}
+	function update(){
+		document.form1.action="";
+	}
+</script>
+</head>
+<body>
+	<h2>게시물 보기, 수정</h2>
+	<form method="post" name="form1" enctype=multipart/form-data>
+		<table border="1" width="700">
+			<tr>
+				<td>bno</td><td><input type="text" name="bno" value="{{dto.bno}}" readonly /></td>
+				<td>title</td><td><input type="text" name="title" value="{{dto.title}}" /></td>
+				<td>writer</td><td><input type="text" name="writer" value="{{dto.writer}}" /></td>
+				<td>content</td><td><textarea name="content" cols="60" rows="3">{{dto.content}}</textarea></td>
+				<td>hit</td><td><input type="text" name="hit" value="{{dto.hit}}" readonly /></td>
+				<td>filese</td>
+				<td>
+				{% if dto.filesize > 0 %}
+				<a href="/download?bno={{dto.bno}}">{{dto.filename}} ({{filesize}} KB)</a>
+				{% endif %}
+				<input type="file" name="file"/></td>
+				<td>downs</td><td><input type="text" name="down" value="{{dto.down}}" readonly /></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					<input type="button" value="목록" onclick="home()"/>
+					<input type="button" value="수정" onclick="update()"/>
+					<input type="button" value="삭제" onclick="del()"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
