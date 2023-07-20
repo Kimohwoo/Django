@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.template.context_processors import request
-from board.models import Board, Comment
+from board.models import Board, Comment, Book
 from django.views.decorators.csrf import csrf_exempt
 import os, math
 from urllib.parse import quote
@@ -9,9 +9,81 @@ import chunk
 from django.template.defaulttags import csrf_token
 from django.db.models import Q
 import board
+from django.contrib.auth.models import User
+from django.contrib import auth
+from django.contrib.auth.decorators import login_required
+from board import bigdatapro
+from matplotlib import font_manager, rc
+import matplotlib.pyplot as plt
+from pyboard.settings import STATIC_DIR
 
 # Create your views here.
 UPLOAD_DIR = "C:/Users/it/Documents/DjangoWork/pyboard/board/static/images/"
+
+
+def home(request):
+    return render(request, 'main.html')
+
+def chart(request):
+    data = Book.objects.all().values_list('title', 'point')
+    print(data)
+    bigdatapro.makeChart(data)
+    return render(request, 'bigdata/chart.html', {'data': data})
+
+def signup_form(request):
+    return render(request, 'user/signup.html')
+
+def cctv_map(request):
+    bigdatapro.cctv_map()
+    return render(request, 'map/map01.html')
+
+def webcraw(request):
+    data = []
+    bigdatapro.web_craw(data)
+    for book in data:
+        dto = Book(title = book[0], author = book[1], price = book[2], point = book[3])
+        dto.save()
+    return redirect('/')
+
+@csrf_exempt
+def signup(request):
+    if request.method=='POST':
+        if request.POST['password'] == request.POST['password2']:
+            username = request.POST['username']
+            password = request.POST['password']
+            email = request.POST['email']
+            user = User.objects.create_user(username, email, password)
+            return redirect('/login_form')
+    return render(request, 'user/signup.html')
+
+def login_form(request):
+    return render(request, 'user/login.html')
+    
+@csrf_exempt        
+def login(request):
+    if request.method=='POST':
+        username = request.POST['username']
+        password = request.POST['password']    
+        
+        user = auth.authenticate(request, username=username, password=password)
+        
+        
+        if user is not None:
+            auth.login(request, user)
+            return redirect("/")
+        else:
+            return render(request, 'user/login.html', {'error': 'username or password is incoreect'})
+        
+    else:
+        return render(request, 'user/login.html')
+        
+def logout(request):
+    if request.user.is_authenticated:
+        auth.logout(request)
+        return redirect("/")
+    return render(request, 'user/login.html')
+        
+
 
 def list1(request):
     boardCount = Board.objects.all().count()
@@ -95,6 +167,7 @@ def list(request):
                                                'start_page': start_page, 'end_page': end_page, 'total_page': total_page, 'block_size': block_size,
                                                'prev_list': prev_list, 'next_list': next_list, 'links': links})
 
+@login_required
 def register(request):
     return render(request, 'board/register.html')
 

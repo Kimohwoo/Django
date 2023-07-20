@@ -28,4 +28,13 @@ urlpatterns = [
     path("update/", views.update),
     path("delete/", views.delete),
     path("reply_insert/", views.reply_insert),
+    path("", views.home),
+    path("signup_form/", views.signup_form),
+    path("signup/", views.signup),
+    path("login/", views.login),
+    path("login_form/", views.login_form),
+    path("logout/", views.logout),
+    path("cctv_map/", views.cctv_map),
+    path("webcraw/", views.webcraw),
+    path("chart/", views.chart),
 ]

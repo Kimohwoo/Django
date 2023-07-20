@@ -1,0 +1,29 @@
+'''
+Created on 2023. 7. 20.
+
+@author: it
+'''
+import os
+from pyboard.settings import STATIC_DIR, TEMPLATE_DIR
+import pandas as pd
+import folium
+from pip._internal import locations
+from folium import plugins
+
+def cctv_map():
+    popup = []
+    locations = []
+    path = os.path.join(STATIC_DIR, 'data/CCTV_20190917.csv')
+    
+    df = pd.read_csv(path)
+    
+    for data in df.value:
+        if data[4] > 0 :
+            popup.append(data['1'])
+            locations.append(data['10'], data[11])
+    
+    m = folium.Map(location=locations[0], zoom_start=11)
+    plugins.MarkerCluster(locations, popup = popup).add_to(m)
+    m.save(os.path.join(TEMPLATE_DIR, 'map/map01.html'))
+    
+    

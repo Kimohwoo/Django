@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>홈 페이지</title>
+</head>
+<body>
+	<h2>빅데이터 처리</h2>
+	{% if request.user.is_authoenticated %}
+		<h3><a href="/logout">로그아웃 : [{{user.username}}]</a></h3>
+	{% else %}
+		<h3><a href="/login_form">로그인</a></h3>
+	{% endif %}
+	
+	<h3><a href="/list">게시판</a></h3>
+	<h3><a href="/cctv_map">cctv_map</a></h3>
+	
+</body>
+</html>

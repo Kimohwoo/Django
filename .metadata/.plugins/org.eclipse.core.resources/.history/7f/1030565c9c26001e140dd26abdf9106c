@@ -1,0 +1,23 @@
+'''
+Created on 2023. 7. 20.
+
+@author: it
+'''
+import os
+from pyboard.settings import STATIC_DIR
+import pandas as pd
+
+def cctv_map():
+    popup = []
+    locations = []
+    path = os.path.join(STATIC_DIR, 'data/CCTV_20190917.csv')
+    
+    df = pd.read_csv(path)
+    
+    for data in df.value:
+        if data[4] > 0 :
+            popup.append(data['1'])
+            location.append(data[''])
+    
+    
+    

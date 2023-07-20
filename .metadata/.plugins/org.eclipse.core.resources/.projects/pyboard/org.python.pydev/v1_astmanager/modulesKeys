@@ -2,6 +2,7 @@ MODULES_MANAGER_V3
 board.__init__|C:\Users\it\Documents\DjangoWork\pyboard\board\__init__.py
 board.admin|C:\Users\it\Documents\DjangoWork\pyboard\board\admin.py
 board.apps|C:\Users\it\Documents\DjangoWork\pyboard\board\apps.py
+board.bigdatapro|C:\Users\it\Documents\DjangoWork\pyboard\board\bigdatapro.py
 board.migrations.0001_initial|C:\Users\it\Documents\DjangoWork\pyboard\board\migrations\0001_initial.py
 board.migrations.__init__|C:\Users\it\Documents\DjangoWork\pyboard\board\migrations\__init__.py
 board.models|C:\Users\it\Documents\DjangoWork\pyboard\board\models.py
